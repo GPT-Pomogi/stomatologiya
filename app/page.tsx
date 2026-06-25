@@ -122,7 +122,7 @@ function PrimaryButton({ children, href = "#consultation" }: { children: React.R
 
 export default function Home() {
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative overflow-hidden pt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -130,7 +130,7 @@ export default function Home() {
 
       <div className="pointer-events-none absolute left-1/2 top-0 h-[620px] w-[920px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(13,138,122,0.20),transparent_66%)] blur-3xl animate-gradientMove" />
 
-      <header className="sticky top-0 z-50 border-b border-white/60 bg-ivory/82 backdrop-blur-xl">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-ivory/82 backdrop-blur-xl">
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
           <a href="#" className="flex items-center gap-3 font-semibold text-ink">
             <span className="flex size-10 items-center justify-center rounded-full bg-deep text-white">
