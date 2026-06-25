@@ -195,8 +195,8 @@ export default function Home() {
             <div className="relative">
               <div className="absolute -left-6 top-10 size-28 rounded-full bg-mint blur-xl animate-float" />
               <img
-                src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=86"
-                alt="Светлый кабинет стоматологии с современным оборудованием"
+                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=86"
+                alt="Премиальный светлый кабинет стоматологии с современным оборудованием"
                 className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-premium"
               />
               <div className="glass-panel absolute bottom-5 left-5 right-5 rounded-3xl p-5 shadow-soft">
@@ -346,8 +346,8 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
             <img
-              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=86"
-              alt="Современная стоматологическая клиника в светлых тонах"
+              src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=86"
+              alt="Стоматолог проводит аккуратную консультацию пациенту"
               className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-premium"
             />
           </Reveal>
