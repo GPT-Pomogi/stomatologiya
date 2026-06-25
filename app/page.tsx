@@ -153,8 +153,8 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="soft-grid relative min-h-[calc(100dvh-80px)] px-5 py-14 md:py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
+      <section className="clinical-canvas relative min-h-[calc(100dvh-80px)] px-5 py-12 md:py-16">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal>
             <div className="max-w-2xl">
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white/80 px-4 py-2 text-sm font-medium text-deep shadow-soft">
@@ -176,7 +176,7 @@ export default function Home() {
                   Посмотреть стоимость
                 </a>
               </div>
-              <div className="mt-9 grid max-w-xl grid-cols-3 gap-3">
+              <div className="metric-rail mt-9 grid max-w-xl grid-cols-3 gap-3 pl-4">
                 {[
                   ["14+", "лет опыта"],
                   ["3D", "планирование"],
@@ -188,18 +188,32 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              <div className="case-strip mt-5 rounded-3xl p-5 shadow-soft">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-deep text-white">
+                    <CalendarCheck size={22} weight="fill" />
+                  </span>
+                  <p className="text-sm leading-6 text-muted">
+                    Этот кейс показывает, как медицинский лендинг может выглядеть дорого, но не давить на пациента.
+                  </p>
+                </div>
+              </div>
             </div>
           </Reveal>
 
           <Reveal className="lg:delay-150">
-            <div className="relative">
+            <div className="hero-visual relative">
               <div className="absolute -left-6 top-10 size-28 rounded-full bg-mint blur-xl animate-float" />
+              <div className="glass-panel absolute -left-3 top-8 z-20 hidden max-w-48 rounded-3xl p-4 shadow-soft md:block">
+                <p className="font-mono text-3xl font-semibold text-deep">3D</p>
+                <p className="mt-1 text-sm leading-5 text-muted">план до операции</p>
+              </div>
               <img
                 src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=86"
                 alt="Премиальный светлый кабинет стоматологии с современным оборудованием"
-                className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-premium"
+                className="relative z-10 aspect-[4/5] w-full rounded-[2.25rem] object-cover shadow-premium"
               />
-              <div className="glass-panel absolute bottom-5 left-5 right-5 rounded-3xl p-5 shadow-soft">
+              <div className="glass-panel absolute bottom-5 left-5 right-5 z-20 rounded-3xl p-5 shadow-soft">
                 <div className="flex items-start gap-4">
                   <span className="mt-1 flex size-11 shrink-0 items-center justify-center rounded-full bg-mint text-deep">
                     <ShieldCheck size={22} weight="fill" />
@@ -219,19 +233,30 @@ export default function Home() {
 
       <section className="px-5 py-16">
         <Reveal>
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-4">
-            {[
-              ["Лицензия", "Медицинская деятельность подтверждена"],
-              ["КТ на месте", "Диагностика без лишних поездок"],
-              ["Честный план", "Без навязанных процедур"],
-              ["Оплата этапами", "Бюджет понятен до старта"],
-            ].map(([title, text]) => (
-              <div key={title} className="rounded-3xl border border-ink/8 bg-white p-6 shadow-soft">
-                <CheckCircle className="mb-4 text-accent" size={24} weight="fill" />
-                <h3 className="font-semibold text-ink">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
-              </div>
-            ))}
+          <div className="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-accent/12 bg-white/72 p-5 shadow-soft backdrop-blur md:grid-cols-[0.9fr_1.1fr] md:p-8">
+            <div className="rounded-[1.5rem] bg-deep p-7 text-white">
+              <p className="text-sm font-medium text-mint">Почему пациент оставляет заявку</p>
+              <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+                Лендинг не продает операцию. Он снижает тревогу перед первым визитом.
+              </h2>
+              <p className="mt-5 leading-7 text-white/74">
+                Поэтому первый экран, цены, врачи и FAQ собраны вокруг спокойного решения, а не вокруг агрессивного оффера.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ["Лицензия", "Медицинская деятельность подтверждена"],
+                ["КТ на месте", "Диагностика без лишних поездок"],
+                ["Честный план", "Без навязанных процедур"],
+                ["Оплата этапами", "Бюджет понятен до старта"],
+              ].map(([title, text]) => (
+                <div key={title} className="card-hover rounded-[1.5rem] border border-ink/8 bg-ivory p-6">
+                  <CheckCircle className="mb-4 text-accent" size={24} weight="fill" />
+                  <h3 className="font-semibold text-ink">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
       </section>
