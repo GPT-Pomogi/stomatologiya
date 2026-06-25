@@ -5,26 +5,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ivory: "#F8FBFA",
-        porcelain: "#EDF5F3",
-        ink: "#10211F",
-        muted: "#60736F",
-        mint: "#D7EEE7",
-        accent: "#0D8A7A",
-        deep: "#06473F",
+        ivory: "#F7FAFF",
+        porcelain: "#ECF3FF",
+        ink: "#17213B",
+        muted: "#6F7D98",
+        mint: "#DCE7FF",
+        accent: "#3B6FE7",
+        deep: "#2749A7",
       },
       boxShadow: {
-        premium: "0 24px 70px rgba(13, 138, 122, 0.14)",
-        soft: "0 16px 45px rgba(16, 33, 31, 0.08)",
+        premium: "0 24px 70px rgba(59, 111, 231, 0.16)",
+        soft: "0 16px 45px rgba(23, 33, 59, 0.08)",
       },
       fontFamily: {
         sans: ["Aptos", "Segoe UI Variable", "Segoe UI", "ui-sans-serif", "system-ui"],
         mono: ["Cascadia Code", "JetBrains Mono", "ui-monospace", "SFMono-Regular"],
+        heading: ['"Iowan Old Style"', '"Palatino Linotype"', "Georgia", "serif"],
       },
       keyframes: {
         glow: {
-          "0%, 100%": { boxShadow: "0 0 0 rgba(13, 138, 122, 0)" },
-          "50%": { boxShadow: "0 0 34px rgba(13, 138, 122, 0.28)" },
+          "0%, 100%": { boxShadow: "0 0 0 rgba(59, 111, 231, 0)" },
+          "50%": { boxShadow: "0 0 34px rgba(59, 111, 231, 0.28)" },
         },
         float: {
           "0%, 100%": { transform: "translate3d(0, 0, 0)" },

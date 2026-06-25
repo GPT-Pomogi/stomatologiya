@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   CalendarCheck,
   Certificate,
   CheckCircle,
@@ -19,7 +20,8 @@ const doctors = [
     name: "Илья Корнев",
     role: "Имплантолог, хирург",
     experience: "14 лет опыта",
-    detail: "Планирует операции по КТ и ведет сложные случаи с дефицитом костной ткани.",
+    detail:
+      "Планирует операции по КТ и ведет сложные случаи с дефицитом костной ткани.",
     image:
       "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80",
   },
@@ -27,10 +29,19 @@ const doctors = [
     name: "Мария Орлова",
     role: "Ортопед, эстетическая стоматология",
     experience: "11 лет опыта",
-    detail: "Отвечает за финальную эстетику улыбки, прикус и естественный вид коронок.",
+    detail:
+      "Отвечает за финальную эстетику улыбки, прикус и естественный вид коронок.",
     image:
       "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",
   },
+];
+
+const logos = [
+  "Straumann",
+  "Nobel Biocare",
+  "OSSTEM",
+  "Dentsply Sirona",
+  "Megagen",
 ];
 
 const packages = [
@@ -79,7 +90,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: "Дентал Прайм",
-  description: "Имплантация зубов с 3D-планированием, гарантией и записью на консультацию.",
+  description:
+    "Премиальный лендинг стоматологии: имплантация зубов с 3D-планированием, гарантией, опытными врачами и записью на консультацию.",
   medicalSpecialty: "Dentistry",
   telephone: "+7 495 000-00-00",
   address: {
@@ -103,19 +115,30 @@ function SectionTitle({
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
       <p className="mb-3 text-sm font-medium text-accent">{label}</p>
-      <h2 className="text-3xl font-semibold leading-tight text-ink md:text-5xl">{title}</h2>
-      {text ? <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted">{text}</p> : null}
+      <h2 className="display-serif text-3xl font-semibold leading-tight text-ink md:text-5xl">
+        {title}
+      </h2>
+      {text ? (
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted">{text}</p>
+      ) : null}
     </div>
   );
 }
 
-function PrimaryButton({ children, href = "#consultation" }: { children: React.ReactNode; href?: string }) {
+function PrimaryButton({
+  children,
+  href = "#consultation",
+}: {
+  children: React.ReactNode;
+  href?: string;
+}) {
   return (
     <a
       href={href}
-      className="premium-button inline-flex min-h-12 items-center justify-center rounded-full bg-deep px-6 text-sm font-semibold text-white shadow-premium transition hover:-translate-y-0.5 hover:bg-accent active:translate-y-0"
+      className="premium-button inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-6 text-sm font-semibold text-white shadow-premium transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(59,111,231,0.24)] active:translate-y-0"
     >
       {children}
+      <ArrowRight size={18} weight="bold" />
     </a>
   );
 }
@@ -128,40 +151,49 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[620px] w-[920px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(13,138,122,0.20),transparent_66%)] blur-3xl animate-gradientMove" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[620px] w-[920px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(59,111,231,0.20),transparent_66%)] blur-3xl animate-gradientMove" />
 
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-ivory/82 backdrop-blur-xl">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/70 bg-white/76 backdrop-blur-xl">
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
           <a href="#" className="flex items-center gap-3 font-semibold text-ink">
-            <span className="flex size-10 items-center justify-center rounded-full bg-deep text-white">
+            <span className="flex size-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] text-white shadow-soft">
               <Tooth size={20} weight="fill" />
             </span>
             Дентал Прайм
           </a>
           <div className="hidden items-center gap-8 text-sm text-muted md:flex">
-            <a className="transition hover:text-ink" href="#doctors">Врачи</a>
-            <a className="transition hover:text-ink" href="#prices">Цены</a>
-            <a className="transition hover:text-ink" href="#reviews">Отзывы</a>
-            <a className="transition hover:text-ink" href="#faq">FAQ</a>
+            <a className="transition hover:text-ink" href="#doctors">
+              Врачи
+            </a>
+            <a className="transition hover:text-ink" href="#prices">
+              Цены
+            </a>
+            <a className="transition hover:text-ink" href="#reviews">
+              Отзывы
+            </a>
+            <a className="transition hover:text-ink" href="#faq">
+              FAQ
+            </a>
           </div>
           <a
             href="#consultation"
-            className="rounded-full border border-accent/20 bg-white px-4 py-2 text-sm font-semibold text-deep shadow-soft transition hover:-translate-y-0.5 hover:border-accent/40"
+            className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-5 py-3 text-sm font-semibold text-white shadow-premium transition hover:-translate-y-0.5"
           >
+            <CalendarCheck size={18} weight="fill" />
             Записаться
           </a>
         </nav>
       </header>
 
       <section className="clinical-canvas relative min-h-[calc(100dvh-80px)] px-5 py-12 md:py-16">
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.96fr_1.04fr]">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white/80 px-4 py-2 text-sm font-medium text-deep shadow-soft">
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-white/78 px-4 py-2 text-sm font-medium text-deep shadow-soft backdrop-blur">
                 <Sparkle size={16} weight="fill" />
                 Консультация с хирургом и планом лечения
               </p>
-              <h1 className="text-5xl font-semibold leading-[1.02] tracking-[-0.02em] text-ink md:text-7xl">
+              <h1 className="display-serif text-5xl font-semibold leading-[0.98] tracking-[-0.035em] text-ink md:text-[5.5rem]">
                 Имплантация зубов с гарантией и 3D-планированием
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
@@ -171,51 +203,29 @@ export default function Home() {
                 <PrimaryButton>Записаться на консультацию</PrimaryButton>
                 <a
                   href="#prices"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink/10 bg-white px-6 text-sm font-semibold text-ink shadow-soft transition hover:-translate-y-0.5 hover:border-accent/35"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white/84 px-6 text-sm font-semibold text-ink shadow-soft transition hover:-translate-y-0.5 hover:border-accent/35"
                 >
                   Посмотреть стоимость
                 </a>
-              </div>
-              <div className="metric-rail mt-9 grid max-w-xl grid-cols-3 gap-3 pl-4">
-                {[
-                  ["14+", "лет опыта"],
-                  ["3D", "планирование"],
-                  ["5 лет", "гарантия"],
-                ].map(([value, label]) => (
-                  <div key={value} className="rounded-2xl border border-white/70 bg-white/75 p-4 shadow-soft">
-                    <p className="text-2xl font-semibold text-deep">{value}</p>
-                    <p className="mt-1 text-sm text-muted">{label}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="case-strip mt-5 rounded-3xl p-5 shadow-soft">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-deep text-white">
-                    <CalendarCheck size={22} weight="fill" />
-                  </span>
-                  <p className="text-sm leading-6 text-muted">
-                    Этот кейс показывает, как медицинский лендинг может выглядеть дорого, но не давить на пациента.
-                  </p>
-                </div>
               </div>
             </div>
           </Reveal>
 
           <Reveal className="lg:delay-150">
             <div className="hero-visual relative">
-              <div className="absolute -left-6 top-10 size-28 rounded-full bg-mint blur-xl animate-float" />
-              <div className="glass-panel absolute -left-3 top-8 z-20 hidden max-w-48 rounded-3xl p-4 shadow-soft md:block">
+              <div className="absolute -left-6 top-10 size-28 rounded-full bg-[rgba(59,111,231,0.22)] blur-3xl animate-float" />
+              <div className="glass-panel absolute -left-3 top-8 z-20 hidden max-w-48 rounded-[2rem] p-4 shadow-soft md:block">
                 <p className="font-mono text-3xl font-semibold text-deep">3D</p>
                 <p className="mt-1 text-sm leading-5 text-muted">план до операции</p>
               </div>
               <img
                 src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=86"
                 alt="Премиальный светлый кабинет стоматологии с современным оборудованием"
-                className="relative z-10 aspect-[4/5] w-full rounded-[2.25rem] object-cover shadow-premium"
+                className="relative z-10 aspect-[4/5] w-full rounded-[2.5rem] object-cover shadow-premium"
               />
-              <div className="glass-panel absolute bottom-5 left-5 right-5 z-20 rounded-3xl p-5 shadow-soft">
+              <div className="glass-panel absolute bottom-5 left-5 right-5 z-20 rounded-[2rem] p-5 shadow-soft">
                 <div className="flex items-start gap-4">
-                  <span className="mt-1 flex size-11 shrink-0 items-center justify-center rounded-full bg-mint text-deep">
+                  <span className="mt-1 flex size-11 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.14)] text-deep">
                     <ShieldCheck size={22} weight="fill" />
                   </span>
                   <div>
@@ -229,6 +239,77 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
+
+        <Reveal>
+          <div className="mx-auto mt-10 max-w-7xl rounded-[2rem] border border-white/70 bg-white/78 px-5 py-5 shadow-soft backdrop-blur md:px-8 md:py-6">
+            <div className="grid items-center divide-y divide-slate-200 md:grid-cols-5 md:divide-x md:divide-y-0">
+              <div className="py-4 md:px-6 md:py-0">
+                <div className="flex items-center gap-4">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.10)] text-accent">
+                    <ShieldCheck size={22} weight="fill" />
+                  </span>
+                  <div>
+                    <p className="text-3xl font-semibold text-ink">14+</p>
+                    <p className="mt-1 text-sm text-muted">лет опыта</p>
+                  </div>
+                </div>
+              </div>
+              <div className="py-4 md:px-6 md:py-0">
+                <div className="flex items-center gap-4">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.10)] text-accent">
+                    <CalendarCheck size={22} weight="fill" />
+                  </span>
+                  <div>
+                    <p className="text-3xl font-semibold text-ink">3D</p>
+                    <p className="mt-1 text-sm text-muted">планирование</p>
+                  </div>
+                </div>
+              </div>
+              <div className="py-4 md:px-6 md:py-0">
+                <div className="flex items-center gap-4">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.10)] text-accent">
+                    <CheckCircle size={22} weight="fill" />
+                  </span>
+                  <div>
+                    <p className="text-3xl font-semibold text-ink">5 лет</p>
+                    <p className="mt-1 text-sm text-muted">гарантия</p>
+                  </div>
+                </div>
+              </div>
+              <div className="py-4 md:px-6 md:py-0">
+                <p className="text-sm leading-6 text-muted">
+                  Этот кейс показывает, как медицинский лендинг может выглядеть дорого, но не давить на пациента.
+                </p>
+              </div>
+              <div className="flex items-center justify-start gap-4 py-4 md:justify-end md:px-6 md:py-0">
+                <div className="max-w-28 text-right">
+                  <p className="text-sm leading-5 text-muted">Доверяют имплантологу</p>
+                </div>
+                <img
+                  src={doctors[0].image}
+                  alt="Портрет врача"
+                  className="size-14 rounded-full object-cover shadow-soft"
+                />
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="mx-auto mt-10 max-w-5xl text-center">
+            <p className="text-sm font-medium text-muted">Нам доверяют</p>
+            <div className="mt-6 grid grid-cols-2 gap-4 text-slate-300 md:grid-cols-5 md:gap-8">
+              {logos.map((brand) => (
+                <div
+                  key={brand}
+                  className="flex h-12 items-center justify-center rounded-2xl border border-white/50 bg-white/50 text-sm font-semibold uppercase tracking-[0.18em]"
+                >
+                  {brand}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <section className="px-5 py-16">
@@ -236,7 +317,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-accent/12 bg-white/72 p-5 shadow-soft backdrop-blur md:grid-cols-[0.9fr_1.1fr] md:p-8">
             <div className="rounded-[1.5rem] bg-deep p-7 text-white">
               <p className="text-sm font-medium text-mint">Почему пациент оставляет заявку</p>
-              <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+              <h2 className="display-serif mt-4 text-3xl font-semibold leading-tight md:text-4xl">
                 Лендинг не продает операцию. Он снижает тревогу перед первым визитом.
               </h2>
               <p className="mt-5 leading-7 text-white/74">
@@ -266,17 +347,21 @@ export default function Home() {
           <SectionTitle
             label="Команда"
             title="Врачи, которым спокойно доверить сложное лечение"
-            text="На лендинге важно показывать не громкие обещания, а конкретику: опыт, роль врача и как устроено решение."
+            text="Нам важны не громкие обещания, а опыт, роль врача и как устроено решение."
           />
         </Reveal>
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           {doctors.map((doctor) => (
             <Reveal key={doctor.name}>
               <article className="card-hover grid overflow-hidden rounded-[2rem] border border-ink/8 bg-white shadow-soft md:grid-cols-[0.88fr_1.12fr]">
-                <img src={doctor.image} alt={doctor.name} className="h-72 w-full object-cover md:h-full" />
+                <img
+                  src={doctor.image}
+                  alt={doctor.name}
+                  className="h-72 w-full object-cover md:h-full"
+                />
                 <div className="p-7">
                   <p className="mb-3 text-sm font-medium text-accent">{doctor.experience}</p>
-                  <h3 className="text-2xl font-semibold text-ink">{doctor.name}</h3>
+                  <h3 className="display-serif text-2xl font-semibold text-ink">{doctor.name}</h3>
                   <p className="mt-1 text-sm font-medium text-muted">{doctor.role}</p>
                   <p className="mt-5 leading-7 text-muted">{doctor.detail}</p>
                   <div className="mt-6 flex items-center gap-3 rounded-2xl bg-porcelain p-4 text-sm text-deep">
@@ -295,11 +380,11 @@ export default function Home() {
           <Reveal>
             <div>
               <p className="mb-3 text-sm font-medium text-accent">Процесс</p>
-              <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
+              <h2 className="display-serif text-3xl font-semibold leading-tight md:text-5xl">
                 Сначала план, потом операция
               </h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-muted">
-                Пациент боится неизвестности. Поэтому сценарий лечения разобран на простые шаги, а каждый шаг снижает тревогу.
+                Пациент боится неизвестности. Поэтому сценарий лечения разбит на простые шаги, а каждый шаг снижает тревогу.
               </p>
             </div>
           </Reveal>
@@ -312,11 +397,11 @@ export default function Home() {
             ].map(([step, title, text]) => (
               <Reveal key={step}>
                 <div className="card-hover grid gap-5 rounded-3xl border border-ink/8 bg-ivory p-6 shadow-soft sm:grid-cols-[72px_1fr]">
-                  <span className="flex size-14 items-center justify-center rounded-full bg-deep font-mono text-sm text-white">
+                  <span className="flex size-14 items-center justify-center rounded-full bg-[rgba(59,111,231,0.12)] font-mono text-sm text-deep">
                     {step}
                   </span>
                   <div>
-                    <h3 className="text-xl font-semibold text-ink">{title}</h3>
+                    <h3 className="display-serif text-xl font-semibold text-ink">{title}</h3>
                     <p className="mt-2 leading-7 text-muted">{text}</p>
                   </div>
                 </div>
@@ -343,7 +428,7 @@ export default function Home() {
                 }`}
               >
                 <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-2xl font-semibold">{item.name}</h3>
+                  <h3 className="display-serif text-2xl font-semibold">{item.name}</h3>
                   <CurrencyRub size={24} className={item.featured ? "text-mint" : "text-accent"} />
                 </div>
                 <p className={`mt-5 text-3xl font-semibold ${item.featured ? "text-white" : "text-deep"}`}>
@@ -379,13 +464,25 @@ export default function Home() {
           <Reveal>
             <div className="grid h-full content-center gap-5">
               {[
-                [FirstAidKit, "Стерильная хирургическая зона", "Отдельный протокол подготовки кабинета и инструментов."],
-                [UserFocus, "Куратор лечения", "Пациент не остается один между этапами и визитами."],
-                [Clock, "Запись без ожидания", "Консультации распределены так, чтобы врач не торопился."],
+                [
+                  FirstAidKit,
+                  "Стерильная хирургическая зона",
+                  "Отдельный протокол подготовки кабинета и инструментов.",
+                ],
+                [
+                  UserFocus,
+                  "Куратор лечения",
+                  "Пациент не остается один между этапами и визитами.",
+                ],
+                [
+                  Clock,
+                  "Запись без ожидания",
+                  "Консультации распределены так, чтобы врач не торопился.",
+                ],
               ].map(([Icon, title, text]) => (
                 <div key={String(title)} className="rounded-3xl border border-white/80 bg-white/80 p-6 shadow-soft">
                   <Icon className="mb-4 text-accent" size={28} weight="fill" />
-                  <h3 className="text-xl font-semibold text-ink">{title as string}</h3>
+                  <h3 className="display-serif text-xl font-semibold text-ink">{title as string}</h3>
                   <p className="mt-2 leading-7 text-muted">{text as string}</p>
                 </div>
               ))}
@@ -404,23 +501,27 @@ export default function Home() {
         </Reveal>
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           {[
-            ["До лечения", "Пациент избегал улыбки из-за отсутствия жевательного зуба."],
-            ["После лечения", "Установлен имплант и коронка в цвет зубного ряда."],
-          ].map(([title, text], index) => (
-            <Reveal key={title}>
+            [
+              "До лечения",
+              "Пациент избегал улыбки из-за отсутствия жевательного зуба.",
+              "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1100&q=84",
+            ],
+            [
+              "После лечения",
+              "Установлен имплант и коронка в цвет зубного ряда.",
+              "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1100&q=84",
+            ],
+          ].map(([title, text, image]) => (
+            <Reveal key={title as string}>
               <figure className="card-hover overflow-hidden rounded-[2rem] border border-ink/8 bg-white shadow-soft">
                 <img
-                  src={
-                    index === 0
-                      ? "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1100&q=84"
-                      : "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1100&q=84"
-                  }
-                  alt={title}
+                  src={image as string}
+                  alt={title as string}
                   className="aspect-[16/10] w-full object-cover"
                 />
                 <figcaption className="p-6">
-                  <h3 className="text-xl font-semibold text-ink">{title}</h3>
-                  <p className="mt-2 text-muted">{text}</p>
+                  <h3 className="display-serif text-xl font-semibold text-ink">{title as string}</h3>
+                  <p className="mt-2 text-muted">{text as string}</p>
                 </figcaption>
               </figure>
             </Reveal>
@@ -437,19 +538,28 @@ export default function Home() {
         </Reveal>
         <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
           {[
-            ["Елена, 42", "Больше всего боялась операции. Врач все показал на снимке, рассказал по шагам, и стало намного спокойнее."],
-            ["Андрей, 51", "Понравилось, что цену назвали до начала лечения. Без внезапных доплат и странных формулировок."],
-            ["Наталья, 37", "Коронка выглядит как свой зуб. Никто не замечает, а я снова нормально улыбаюсь на фото."],
+            [
+              "Елена, 42",
+              "Больше всего боялась операции. Врач все показал на снимке, рассказал по шагам, и стало намного спокойнее.",
+            ],
+            [
+              "Андрей, 51",
+              "Понравилось, что цену назвали до начала лечения. Без внезапных доплат и странных формулировок.",
+            ],
+            [
+              "Наталья, 37",
+              "Коронка выглядит как свой зуб. Никто не замечает, а я снова нормально улыбаюсь на фото.",
+            ],
           ].map(([name, quote]) => (
-            <Reveal key={name}>
+            <Reveal key={name as string}>
               <blockquote className="card-hover h-full rounded-[2rem] border border-ink/8 bg-ivory p-7 shadow-soft">
                 <div className="mb-5 flex text-accent">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star key={index} size={18} weight="fill" />
                   ))}
                 </div>
-                <p className="leading-7 text-muted">{quote}</p>
-                <footer className="mt-6 font-semibold text-ink">{name}</footer>
+                <p className="leading-7 text-muted">{quote as string}</p>
+                <footer className="mt-6 font-semibold text-ink">{name as string}</footer>
               </blockquote>
             </Reveal>
           ))}
@@ -458,7 +568,10 @@ export default function Home() {
 
       <section className="px-5 py-20" id="faq">
         <Reveal>
-          <SectionTitle label="FAQ" title="Вопросы, которые пациент обычно стесняется задать" />
+          <SectionTitle
+            label="FAQ"
+            title="Вопросы, которые пациент обычно стесняется задать"
+          />
         </Reveal>
         <div className="mx-auto max-w-4xl divide-y divide-ink/10 rounded-[2rem] border border-ink/8 bg-white shadow-soft">
           {faq.map((item) => (
@@ -466,7 +579,7 @@ export default function Home() {
               <details className="group p-6">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-lg font-semibold text-ink">
                   {item.question}
-                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-mint text-deep transition group-open:rotate-45">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.12)] text-deep transition group-open:rotate-45">
                     +
                   </span>
                 </summary>
@@ -481,9 +594,9 @@ export default function Home() {
         <Reveal>
           <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] bg-deep text-white shadow-premium lg:grid-cols-[0.92fr_1.08fr]">
             <div className="relative p-8 md:p-12">
-              <div className="absolute right-8 top-8 size-24 rounded-full bg-accent/30 blur-2xl animate-float" />
+              <div className="absolute right-8 top-8 size-24 rounded-full bg-[rgba(220,231,255,0.24)] blur-2xl animate-float" />
               <Heartbeat className="mb-6 text-mint" size={36} weight="fill" />
-              <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
+              <h2 className="display-serif text-3xl font-semibold leading-tight md:text-5xl">
                 Запишитесь на консультацию и получите понятный план лечения
               </h2>
               <p className="mt-5 max-w-xl leading-7 text-white/76">
@@ -516,7 +629,7 @@ export default function Home() {
               </label>
               <button
                 type="submit"
-                className="premium-button mt-2 min-h-12 rounded-full bg-deep px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-accent active:translate-y-0"
+                className="premium-button mt-2 min-h-12 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 active:translate-y-0"
               >
                 Получить план консультации
               </button>
@@ -532,9 +645,15 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-muted md:flex-row md:items-center md:justify-between">
           <p>Дентал Прайм, демо-лендинг для стоматологии и имплантации</p>
           <div className="flex gap-5">
-            <a className="transition hover:text-ink" href="#consultation">Запись</a>
-            <a className="transition hover:text-ink" href="#prices">Цены</a>
-            <a className="transition hover:text-ink" href="#faq">FAQ</a>
+            <a className="transition hover:text-ink" href="#consultation">
+              Запись
+            </a>
+            <a className="transition hover:text-ink" href="#prices">
+              Цены
+            </a>
+            <a className="transition hover:text-ink" href="#faq">
+              FAQ
+            </a>
           </div>
         </div>
       </footer>
