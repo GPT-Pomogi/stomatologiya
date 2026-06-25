@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --accent: 13 138 122;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.18);
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(16, 33, 31, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 33, 31, 0.045) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.premium-button {
+  position: relative;
+  isolation: isolate;
+}
+
+.premium-button::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgb(var(--accent) / 0.25), transparent 66%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.premium-button:hover::after {
+  opacity: 1;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.58)),
+    rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.card-hover {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(13, 138, 122, 0.35);
+  box-shadow: 0 20px 55px rgba(13, 138, 122, 0.13);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
