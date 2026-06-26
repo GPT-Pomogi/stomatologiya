@@ -677,8 +677,8 @@ export default function Home() {
             <a className="transition hover:text-ink" href="#consultation">Запись</a>
             <a className="transition hover:text-ink" href="#prices">Цены</a>
             <a className="transition hover:text-ink" href="#faq">FAQ</a>
-            <a className="transition hover:text-ink" href="#">Политика конфиденциальности</a>
-            <a className="transition hover:text-ink" href="#">Пользовательское соглашение</a>
+            <a className="transition hover:text-ink" href="/privacy">Политика конфиденциальности</a>
+            <a className="transition hover:text-ink" href="/terms">Пользовательское соглашение</a>
           </div>
         </div>
       </footer>
