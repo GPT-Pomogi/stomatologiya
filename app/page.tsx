@@ -135,7 +135,7 @@ function PrimaryButton({
   return (
     <a
       href={href}
-      className="premium-button inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-6 text-sm font-semibold text-white shadow-premium transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(59,111,231,0.24)] active:translate-y-0"
+      className="premium-button inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-6 text-sm font-semibold text-white shadow-premium transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(59,111,231,0.24)] active:scale-[0.98] active:translate-y-0"
     >
       {children}
       <ArrowRight size={18} weight="bold" />
@@ -145,7 +145,14 @@ function PrimaryButton({
 
 export default function Home() {
   return (
-    <main className="relative overflow-hidden pt-20">
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:flex focus:items-center focus:rounded-full focus:bg-deep focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white focus:shadow-premium"
+      >
+        Перейти к содержимому
+      </a>
+      <main className="relative overflow-hidden pt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -177,7 +184,7 @@ export default function Home() {
           </div>
           <a
             href="#consultation"
-            className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-5 py-3 text-sm font-semibold text-white shadow-premium transition hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-5 py-3 text-sm font-semibold text-white shadow-premium transition hover:-translate-y-0.5 active:scale-[0.98] active:translate-y-0"
           >
             <CalendarCheck size={18} weight="fill" />
             Записаться
@@ -185,7 +192,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="clinical-canvas relative min-h-[calc(100dvh-80px)] px-5 py-12 md:py-16">
+      <section id="main-content" className="clinical-canvas relative min-h-[calc(100dvh-80px)] px-5 py-12 md:py-16">
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.96fr_1.04fr]">
           <Reveal>
             <div className="max-w-2xl">
@@ -203,7 +210,7 @@ export default function Home() {
                 <PrimaryButton>Записаться на консультацию</PrimaryButton>
                 <a
                   href="#prices"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white/84 px-6 text-sm font-semibold text-ink shadow-soft transition hover:-translate-y-0.5 hover:border-accent/35"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white/84 px-6 text-sm font-semibold text-ink shadow-soft transition hover:-translate-y-0.5 hover:border-accent/35 active:scale-[0.98] active:translate-y-0"
                 >
                   Посмотреть стоимость
                 </a>
@@ -423,18 +430,25 @@ export default function Home() {
           {packages.map((item) => (
             <Reveal key={item.name}>
               <article
-                className={`card-hover rounded-[2rem] border p-7 shadow-soft ${
+                className={`card-hover flex flex-col rounded-[2rem] border p-7 shadow-soft ${
                   item.featured ? "border-accent/35 bg-deep text-white" : "border-ink/8 bg-white text-ink"
                 }`}
               >
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="display-serif text-2xl font-semibold">{item.name}</h3>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="display-serif text-2xl font-semibold">{item.name}</h3>
+                    {item.featured && (
+                      <span className="mt-2 inline-flex items-center rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold text-mint">
+                        Рекомендуем
+                      </span>
+                    )}
+                  </div>
                   <CurrencyRub size={24} className={item.featured ? "text-mint" : "text-accent"} />
                 </div>
                 <p className={`mt-5 text-3xl font-semibold ${item.featured ? "text-white" : "text-deep"}`}>
                   {item.price}
                 </p>
-                <ul className="mt-7 space-y-4">
+                <ul className="mt-7 grow space-y-4">
                   {item.items.map((line) => (
                     <li key={line} className="flex gap-3 text-sm leading-6">
                       <CheckCircle
@@ -446,6 +460,16 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
+                <a
+                  href="#consultation"
+                  className={`mt-8 flex min-h-11 items-center justify-center rounded-full text-sm font-semibold transition active:scale-[0.98] ${
+                    item.featured
+                      ? "bg-white text-deep hover:bg-white/90"
+                      : "bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] text-white shadow-premium hover:-translate-y-0.5"
+                  }`}
+                >
+                  Записаться на консультацию
+                </a>
               </article>
             </Reveal>
           ))}
@@ -610,6 +634,7 @@ export default function Home() {
                   className="min-h-12 rounded-2xl border border-ink/12 bg-ivory px-4 outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/10"
                   placeholder="Как к вам обращаться"
                   type="text"
+                  required
                 />
               </label>
               <label className="grid gap-2 text-sm font-medium">
@@ -618,6 +643,7 @@ export default function Home() {
                   className="min-h-12 rounded-2xl border border-ink/12 bg-ivory px-4 outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/10"
                   placeholder="+7 999 000-00-00"
                   type="tel"
+                  required
                 />
               </label>
               <label className="grid gap-2 text-sm font-medium">
@@ -629,7 +655,7 @@ export default function Home() {
               </label>
               <button
                 type="submit"
-                className="premium-button mt-2 min-h-12 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 active:translate-y-0"
+                className="premium-button mt-2 min-h-12 rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 active:scale-[0.98] active:translate-y-0"
               >
                 Получить план консультации
               </button>
@@ -642,21 +668,21 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-ink/10 px-5 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-muted md:flex-row md:items-center md:justify-between">
-          <p>Дентал Прайм, демо-лендинг для стоматологии и имплантации</p>
-          <div className="flex gap-5">
-            <a className="transition hover:text-ink" href="#consultation">
-              Запись
-            </a>
-            <a className="transition hover:text-ink" href="#prices">
-              Цены
-            </a>
-            <a className="transition hover:text-ink" href="#faq">
-              FAQ
-            </a>
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-muted md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="font-semibold text-ink">Дентал Прайм</p>
+            <p className="mt-1">© 2025 Демо-лендинг стоматологии. Все права защищены.</p>
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <a className="transition hover:text-ink" href="#consultation">Запись</a>
+            <a className="transition hover:text-ink" href="#prices">Цены</a>
+            <a className="transition hover:text-ink" href="#faq">FAQ</a>
+            <a className="transition hover:text-ink" href="#">Политика конфиденциальности</a>
+            <a className="transition hover:text-ink" href="#">Пользовательское соглашение</a>
           </div>
         </div>
       </footer>
-    </main>
+      </main>
+    </>
   );
 }
