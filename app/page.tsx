@@ -204,7 +204,7 @@ export default function Home() {
                 <ShieldCheck size={16} weight="fill" className="text-accent" />
                 Консультация с хирургом и 3D-план лечения
               </p>
-              <h1 className="display-serif text-5xl font-semibold leading-[0.98] tracking-[-0.035em] text-ink md:text-[5.5rem]">
+              <h1 className="font-display text-5xl font-bold leading-[0.96] tracking-[-0.04em] text-ink md:text-[5.5rem]">
                 Имплантация зубов с гарантией и <span className="text-accent">3D-планированием</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-muted">

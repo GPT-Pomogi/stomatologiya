@@ -21,6 +21,7 @@ const config: Config = {
         sans: ["Aptos", "Segoe UI Variable", "Segoe UI", "ui-sans-serif", "system-ui"],
         mono: ["Cascadia Code", "JetBrains Mono", "ui-monospace", "SFMono-Regular"],
         heading: ['"Iowan Old Style"', '"Palatino Linotype"', "Georgia", "serif"],
+        display: ["var(--font-display)", "Manrope", "ui-sans-serif"],
       },
       keyframes: {
         glow: {

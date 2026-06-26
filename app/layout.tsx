@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://stomatologiya-implant.vercel.app"),
@@ -33,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className="bg-ivory text-ink antialiased">{children}</body>
+      <body className={`${manrope.variable} bg-ivory text-ink antialiased`}>{children}</body>
     </html>
   );
 }
