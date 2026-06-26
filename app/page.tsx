@@ -4,11 +4,12 @@ import {
   Certificate,
   CheckCircle,
   Clock,
+  Cube,
   CurrencyRub,
   FirstAidKit,
   Heartbeat,
+  ListBullets,
   ShieldCheck,
-  Sparkle,
   Star,
   Tooth,
   UserFocus,
@@ -162,11 +163,14 @@ export default function Home() {
 
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/70 bg-white/76 backdrop-blur-xl">
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
-          <a href="#" className="flex items-center gap-3 font-semibold text-ink">
+          <a href="#" className="flex items-center gap-3">
             <span className="flex size-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#3B6FE7,#2749A7)] text-white shadow-soft">
               <Tooth size={20} weight="fill" />
             </span>
-            Дентал Прайм
+            <div className="leading-tight">
+              <p className="font-semibold text-ink">Дентал Прайм</p>
+              <p className="text-xs text-muted">Современная стоматология</p>
+            </div>
           </a>
           <div className="hidden items-center gap-8 text-sm text-muted md:flex">
             <a className="transition hover:text-ink" href="#doctors">
@@ -197,21 +201,25 @@ export default function Home() {
           <Reveal>
             <div className="max-w-2xl">
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-white/78 px-4 py-2 text-sm font-medium text-deep shadow-soft backdrop-blur">
-                <Sparkle size={16} weight="fill" />
-                Консультация с хирургом и планом лечения
+                <ShieldCheck size={16} weight="fill" className="text-accent" />
+                Консультация с хирургом и 3D-план лечения
               </p>
               <h1 className="display-serif text-5xl font-semibold leading-[0.98] tracking-[-0.035em] text-ink md:text-[5.5rem]">
-                Имплантация зубов с гарантией и 3D-планированием
+                Имплантация зубов с гарантией и <span className="text-accent">3D-планированием</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
                 Восстановим зуб без хаоса в лечении: КТ-диагностика, понятный план, опытные врачи и спокойная запись на консультацию.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <PrimaryButton>Записаться на консультацию</PrimaryButton>
+                <PrimaryButton>
+                  <CalendarCheck size={18} weight="fill" />
+                  Записаться на консультацию
+                </PrimaryButton>
                 <a
                   href="#prices"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white/84 px-6 text-sm font-semibold text-ink shadow-soft transition hover:-translate-y-0.5 hover:border-accent/35 active:scale-[0.98] active:translate-y-0"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white/84 px-6 text-sm font-semibold text-ink shadow-soft transition hover:-translate-y-0.5 hover:border-accent/35 active:scale-[0.98] active:translate-y-0"
                 >
+                  <ListBullets size={18} />
                   Посмотреть стоимость
                 </a>
               </div>
@@ -222,7 +230,8 @@ export default function Home() {
             <div className="hero-visual relative">
               <div className="absolute -left-6 top-10 size-28 rounded-full bg-[rgba(59,111,231,0.22)] blur-3xl animate-float" />
               <div className="glass-panel absolute -left-3 top-8 z-20 hidden max-w-48 rounded-[2rem] p-4 shadow-soft md:block">
-                <p className="font-mono text-3xl font-semibold text-deep">3D</p>
+                <Cube size={28} className="text-accent" weight="duotone" />
+                <p className="mt-2 font-mono text-3xl font-semibold text-deep">3D</p>
                 <p className="mt-1 text-sm leading-5 text-muted">план до операции</p>
               </div>
               <img
@@ -231,16 +240,19 @@ export default function Home() {
                 className="relative z-10 aspect-[4/5] w-full rounded-[2.5rem] object-cover shadow-premium"
               />
               <div className="glass-panel absolute bottom-5 left-5 right-5 z-20 rounded-[2rem] p-5 shadow-soft">
-                <div className="flex items-start gap-4">
-                  <span className="mt-1 flex size-11 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.14)] text-deep">
-                    <ShieldCheck size={22} weight="fill" />
-                  </span>
-                  <div>
-                    <p className="font-semibold text-ink">План лечения до операции</p>
-                    <p className="mt-1 text-sm leading-6 text-muted">
-                      Пациент заранее понимает этапы, сроки, цену и гарантийные условия.
-                    </p>
-                  </div>
+                <p className="font-semibold text-ink">План лечения до операции</p>
+                <div className="mt-4 grid grid-cols-3 gap-3 border-t border-ink/8 pt-4">
+                  {([
+                    [CurrencyRub, "Прозрачно", "Без скрытых платежей"],
+                    [ListBullets, "Понятно", "Пошаговый план лечения"],
+                    [ShieldCheck, "Надёжно", "Гарантия на все виды работ"],
+                  ] as const).map(([Icon, label, desc]) => (
+                    <div key={label}>
+                      <Icon size={18} className="text-accent" weight="fill" />
+                      <p className="mt-1.5 text-sm font-semibold text-ink">{label}</p>
+                      <p className="mt-0.5 text-xs leading-4 text-muted">{desc}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -248,57 +260,22 @@ export default function Home() {
         </div>
 
         <Reveal>
-          <div className="mx-auto mt-10 max-w-7xl rounded-[2rem] border border-white/70 bg-white/78 px-5 py-5 shadow-soft backdrop-blur md:px-8 md:py-6">
-            <div className="grid items-center divide-y divide-slate-200 md:grid-cols-5 md:divide-x md:divide-y-0">
-              <div className="py-4 md:px-6 md:py-0">
-                <div className="flex items-center gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.10)] text-accent">
-                    <ShieldCheck size={22} weight="fill" />
-                  </span>
-                  <div>
-                    <p className="text-3xl font-semibold text-ink">14+</p>
-                    <p className="mt-1 text-sm text-muted">лет опыта</p>
-                  </div>
+          <div className="mx-auto mt-10 max-w-7xl grid gap-4 sm:grid-cols-3">
+            {([
+              [UserFocus, "Опытные хирурги", "Специалисты с практикой от 7 лет"],
+              [FirstAidKit, "Точная диагностика", "КТ и 3D-план для идеального результата"],
+              [Certificate, "Гарантия на результат", "Официальная гарантия на импланты и работы"],
+            ] as const).map(([Icon, title, text]) => (
+              <div key={title} className="flex items-start gap-4 rounded-2xl border border-white/70 bg-white/72 px-5 py-4 shadow-soft backdrop-blur">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.10)] text-accent">
+                  <Icon size={20} weight="fill" />
+                </span>
+                <div>
+                  <p className="font-semibold text-ink">{title}</p>
+                  <p className="mt-0.5 text-sm leading-5 text-muted">{text}</p>
                 </div>
               </div>
-              <div className="py-4 md:px-6 md:py-0">
-                <div className="flex items-center gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.10)] text-accent">
-                    <CalendarCheck size={22} weight="fill" />
-                  </span>
-                  <div>
-                    <p className="text-3xl font-semibold text-ink">3D</p>
-                    <p className="mt-1 text-sm text-muted">планирование</p>
-                  </div>
-                </div>
-              </div>
-              <div className="py-4 md:px-6 md:py-0">
-                <div className="flex items-center gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[rgba(59,111,231,0.10)] text-accent">
-                    <CheckCircle size={22} weight="fill" />
-                  </span>
-                  <div>
-                    <p className="text-3xl font-semibold text-ink">5 лет</p>
-                    <p className="mt-1 text-sm text-muted">гарантия</p>
-                  </div>
-                </div>
-              </div>
-              <div className="py-4 md:px-6 md:py-0">
-                <p className="text-sm leading-6 text-muted">
-                  Этот кейс показывает, как медицинский лендинг может выглядеть дорого, но не давить на пациента.
-                </p>
-              </div>
-              <div className="flex items-center justify-start gap-4 py-4 md:justify-end md:px-6 md:py-0">
-                <div className="max-w-28 text-right">
-                  <p className="text-sm leading-5 text-muted">Доверяют имплантологу</p>
-                </div>
-                <img
-                  src={doctors[0].image}
-                  alt="Портрет врача"
-                  className="size-14 rounded-full object-cover shadow-soft"
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </Reveal>
 
